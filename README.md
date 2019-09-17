@@ -1,4 +1,5 @@
 # Send It
+![Logo](./img/logo.png)
 Alex Key, Asa Murphy, Chassidy Foreman, Patrick Parker, Zachary Goldberg
 <br />
 ## General Info
