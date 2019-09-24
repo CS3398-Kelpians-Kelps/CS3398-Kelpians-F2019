@@ -1,0 +1,3 @@
+After looking over everything, I believe that the JFileChooser.
+It creates a window, much like windows file explorer. Gives options to move around directory and create new folders.
+Pretty simple to use and well documented on the API.
