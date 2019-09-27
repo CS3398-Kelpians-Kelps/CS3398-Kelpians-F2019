@@ -1,0 +1,39 @@
+Author: Alex Key
+
+Documentation to setup mysql and run the connector.
+
+Notes:
+This is on a local machine, using linux (Anything DEB based should work).
+If run on a different machine, different root password is needed.
+This connector will only work with the DB / tables / columns I have setup for testing. More info below.
+Current functionality includes simple queries. Later in development the class can be changed for what is needed.
+
+Installations:
+  sudo apt-get install openjdk-8-jdk
+  sudo apt-get install mysql-server mysql-client libmysql-java
+  Install Platform Independent TAR from https://dev.mysql.com/downloads/connector/j/
+  Move mysql-connector-java-8.0.17.jar from above TAR into working directory
+
+Commands to setup specific testing DB used in connector class:
+  mysql -u root -p
+    - Enter password
+  create database test;
+  show databases;
+    - Check that db was created
+  use test;
+  create table fake_data(
+    -> id int auto_increment primary key,
+    -> name char(20) not null
+    -> );
+  show tables;
+    - Check that table was created
+  insert into fake_data values(1, "alex");
+  select * from fake_data;
+    -Check that data was added
+  exit;
+
+Compile:
+  javac java-filename.java
+
+Run:
+  java -cp .:mysql-connector-java-8.0.17.jar Connector
