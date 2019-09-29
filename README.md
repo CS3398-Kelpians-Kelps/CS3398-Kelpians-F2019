@@ -1,5 +1,5 @@
 # sendIt
-Alex Key, Asa Murphy, Chassidy Foreman, Patrick Parker, Zachary Goldberg
+Alex Key, Asa Murphy, Chassidy Foreman, Patrick Parker, Zachary Goldberg<br>
 We want to create a desktop application that will allow users to send files in between devices.<br>
 The target group could be for students and the general working class who may need to transfer data between work stations.<br>
 We are doing this because we feel like transferring data via email is a hinderence to an individuals productivity and effieicency at getting work done.<br>
