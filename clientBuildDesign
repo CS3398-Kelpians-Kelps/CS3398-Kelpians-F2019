@@ -1,0 +1,32 @@
+Based on the SendIt design layout document, current features for client will be send message and receive messages from server.
+
+In the background it will need to connect to a server when sending messages/files. Base build will send messages for now. Will upgrade in next sprint to have functionailty for sending documents(photos, pdfs, docs, etc). 
+
+Will also need to be able to connect to server for receiving messages as well. For now, will put in a manual button to make it happen. 
+
+So to send, you will press send, and to receive, you will press receive. Will get confirmation message when succesfully sent or received from server.
+
+Will start with 2 file, a interface and a main. Current build will have terminal based interface and functionality will be inside of the main. Will pull outside of the main into own file as we progress in the build to encapsulate functionality from interface.
+
+Main:
+setup based on config file for server address and listening port(s).
+post connection status. If error message, will prompt user to check config file. If no config file, will create default file.
+Load any prior messages from a text file. If no file, will create file.
+start interface:
+  1) Send Message
+  2) Receive Message
+  3) Close
+Send Message:
+  Will prompt for line of text to send. 
+  Once entered, will send line to server.
+  Will post status (error sending or message received)
+  Return to main interface.
+Receive Message
+  Connect to server (possible to error message here, prompting to check config file).
+  Check for new messages. 
+  Display any new messages.
+  Return to main interface.
+CLose
+  close the socket.
+  save any messages in a text file.
+  close program.
