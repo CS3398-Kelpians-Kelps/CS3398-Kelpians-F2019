@@ -30,3 +30,13 @@ CLose
   close the socket.
   save any messages in a text file.
   close program.
+
+
+Have current client running with default server.
+to run on windows, open cmd, make sure java is installed and is defaulted to open with Java Secondary Binary, then use following command.
+java -jar C:\Your\File\Path\Goes\Here\jarFileName.jar
+
+Use that syntax and run Server first, followed by Client.
+using templates found here:
+https://www.geeksforgeeks.org/socket-programming-in-java/
+https://stackoverflow.com/questions/5680259/using-sockets-to-send-and-receive-data
