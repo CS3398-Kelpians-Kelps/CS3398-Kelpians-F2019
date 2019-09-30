@@ -5,6 +5,7 @@
  */
 // A Java program for a Client
 
+import javax.xml.crypto.Data;
 import java.net.*;
 import java.io.*;
 
@@ -15,6 +16,7 @@ public class Client
     private DataInputStream input = null;
     private DataOutputStream out	 = null;
     private String line = "";
+    private DataInputStream in = null;
     private GUI mainMenu = new GUI();
 
     // constructor to put ip address and port
@@ -25,12 +27,10 @@ public class Client
         {
             socket = new Socket(address, port);
             System.out.println("Connected");
-
-            // takes input from terminal
             input = new DataInputStream(System.in);
-
-            // sends output to the socket
             out = new DataOutputStream(socket.getOutputStream());
+            in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
+
         }
         catch(UnknownHostException u)
         {
@@ -50,16 +50,28 @@ public class Client
                 line = input.readLine();
                 switch(line) {
                     case "1":{
+                        out.writeUTF(line);
                         System.out.println("Put your message here.");
                         line = input.readLine();
                         out.writeUTF(line);
                         break;
                     }case "2": {
-                        System.out.println("Currently not implemented");
+                        /**out.writeUTF(line);
+                        line = in.readUTF();
+                        System.out.println(line);*/
+                        /**InputStream is = socket.getInputStream();
+                        InputStreamReader isr = new InputStreamReader(is);
+                        BufferedReader br = new BufferedReader(isr);
+                        String message = br.readLine();
+                        System.out.println("Message received from the server : " +message);*/
+                        line = in.readLine();
+                        System.out.println(line);
                         break;
                     }case "3":
                         line = "Over";
                         out.writeUTF(line);
+                        break;
+                    default:
                         break;
                 }
 

@@ -7,6 +7,9 @@ public class Server
     private Socket          socket   = null;
     private ServerSocket    server   = null;
     private DataInputStream in       =  null;
+    private DataOutputStream out     =  null;
+    private String line = "";
+    private String history = "";
 
     // constructor with port 
     public Server(int port)
@@ -23,19 +26,36 @@ public class Server
             System.out.println("Client accepted");
 
             // takes input from the client socket 
-            in = new DataInputStream(
-                    new BufferedInputStream(socket.getInputStream()));
-
-            String line = "";
-
+            in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
+            out = new DataOutputStream( new BufferedOutputStream(socket.getOutputStream()));
             // reads message from client until "Over" is sent 
             while (!line.equals("Over"))
             {
+
                 try
                 {
                     line = in.readUTF();
-                    System.out.println(line);
+                    switch (line) {
+                        case "1":
+                            line = in.readUTF();
+                            System.out.println(line);
+                            history += line;
+                            break;
+                        case "2":
+                            /**out.writeUTF(history);*/
+                            /**OutputStream os = socket.getOutputStream();
+                            OutputStreamWriter osw = new OutputStreamWriter(os);
+                            BufferedWriter bw = new BufferedWriter(osw);
+                            bw.write(history);
+                            System.out.println("Message sent to the client is "+history);
+                            bw.flush();*/
+                            out.writeUTF(history);
 
+                            //System.out.println("Not implemented yet");
+                            break;
+                        default:
+                            break;
+                    }
                 }
                 catch(IOException i)
                 {
