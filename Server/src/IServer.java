@@ -1,4 +1,3 @@
-
 public interface IServer{
 
 	//Send to all machines
@@ -12,4 +11,7 @@ public interface IServer{
 
 	//Stops server
 	public void stop();
+
+	//Processes data for sending
+	public void process();
 }
