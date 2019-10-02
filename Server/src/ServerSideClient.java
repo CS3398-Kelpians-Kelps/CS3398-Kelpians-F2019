@@ -1,7 +1,8 @@
 import java.net.*;
 import java.util.*;
+import java.io.*;
 
-public class ServerSideClient implements IClient, {
+public class ServerSideClient implements IClient, Runnable{
 	private IServer server;
 	private boolean running;
 	private BufferedReader in;
@@ -10,12 +11,14 @@ public class ServerSideClient implements IClient, {
 	private String IP;
 
 	public ServerSideClient(IServer server, Socket socket){
-		this.server = server;
-		clientSocket = socket;
-		IP = clientSocket.getRemoteSocketAddress().toString();
-		running = true;
-		in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-		out = new PrintWriter(clientSocket.getOutputStream());
+		try{
+			this.server = server;
+			clientSocket = socket;
+			IP = clientSocket.getRemoteSocketAddress().toString();
+			running = true;
+			in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+			out = new PrintWriter(clientSocket.getOutputStream());
+		}catch(Exception e){System.out.println("ServerSideClient | ERR: " + e.getStackTrace()[1].getLineNumber());}
 	}
 
 	public void send(String data){

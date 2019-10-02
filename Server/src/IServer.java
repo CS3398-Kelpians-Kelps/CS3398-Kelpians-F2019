@@ -13,5 +13,5 @@ public interface IServer{
 	public void stop();
 
 	//Processes data for sending
-	public void process();
+	public void process(String data);
 }

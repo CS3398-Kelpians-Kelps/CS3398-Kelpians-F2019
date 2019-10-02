@@ -6,14 +6,14 @@ public class Server implements IServer, Runnable{
 	private int port;
 	private boolean running;
 	private ServerSocket listener;
-	private ArrayList<IClient> clients;
-	private ArrayList<INetworkListener> listeners;
+	private ArrayList<ServerSideClient> clients;
+	//private ArrayList<INetworkListener> listeners;
 
 	public Server(int port){
 		this.port = port;
 		running = true;
 		clients = new ArrayList<ServerSideClient>();
-		listeners.add(new TextListener());
+		//listeners.add(new TextListener());
 	}
 
 	public void broadcast(String data){
@@ -30,8 +30,9 @@ public class Server implements IServer, Runnable{
 	}
 
 	public void process(String data){
-		for(INetworkListener list : listeners)
-			list.process(data);
+		//for(INetworkListener list : listeners)
+			//list.process(data, this);
+			return;
 	}
 
 	public void run(){

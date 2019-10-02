@@ -1,7 +1,6 @@
 public interface IClient{
-
-	//Send to server
-	public void send(String data, String dest);
+	//Send to client from server
+	public void send(String data);
 
 	//Runs the client
 	public void run();
