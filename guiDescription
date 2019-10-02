@@ -1,3 +1,5 @@
 Here's the code for the simple Client GUI. Each of the buttons send a message to the screen, the close button exits the window.
 You can enter text into the text box, and then the send button will output the message to the screen also.
 Pressing a button or writing a message will override the "actions displayed here" panel.
+
+
