@@ -21,7 +21,7 @@ public class GUI {
       JPanel panel = new JPanel();
       panel.setSize(75,75);
       panel.setLayout(new FlowLayout());
-      JLabel msgPanel = new JLabel("actions displayed here");
+      JLabel msgPanel = new JLabel("Your actions are displayed here.");
 
       // MENU BAR
       JMenuBar bar = new JMenuBar();
@@ -38,18 +38,18 @@ public class GUI {
       item1.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
           String itemPicked = e.getActionCommand();
-          msgPanel.setText("You have chosen: " + itemPicked);
+          msgPanel.setText("You want to open a file.");
         }
       });
       item2.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
           String itemPicked = e.getActionCommand();
-          msgPanel.setText("You have chosen: " + itemPicked);
+          msgPanel.setText("You want to learn more about sendIt.");
         }
       });
 
       // TEXT BOX
-      JLabel msgLabel = new JLabel("Enter your message: ");
+      JLabel msgLabel = new JLabel("Enter your message:");
       JTextField message = new JTextField(20);
 
       //BUTTONS
@@ -66,7 +66,7 @@ public class GUI {
       });
       sendIt.addActionListener(new ActionListener(){
         public void actionPerformed(ActionEvent e){
-          msgPanel.setText("Your message is: " + message.getText());
+          msgPanel.setText("Your message to send is: " + message.getText());
         }
       });
 
