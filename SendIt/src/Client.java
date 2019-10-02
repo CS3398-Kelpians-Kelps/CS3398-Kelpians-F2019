@@ -14,80 +14,78 @@ public class Client
     // initialize socket and input output streams
     private Socket socket		 = null;
     private DataInputStream input = null;
-    private DataOutputStream out	 = null;
+    private PrintWriter out	 = null;
     private String line = "";
-    private DataInputStream in = null;
-    private GUI mainMenu = new GUI();
+    private BufferedReader in = null;
 
     // constructor to put ip address and port
-    public Client(String address, int port)
-    {
+    public Client(String address, int port) {
         // establish a connection
-        try
-        {
+        try {
             socket = new Socket(address, port);
             System.out.println("Connected");
             input = new DataInputStream(System.in);
-            out = new DataOutputStream(socket.getOutputStream());
-            in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
+            out = new PrintWriter(socket.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-        }
-        catch(UnknownHostException u)
-        {
+        } catch (UnknownHostException u) {
             System.out.println(u);
+        } catch (IOException i) {
+            System.out.println(i);
+        }
+
+
+    }
+    public void sendMessage() throws IOException {
+        out.println(line);
+        System.out.println("Put your message here.");
+        line = input.readLine();
+        out.println(line);
+    }
+    public void receiveMessage() throws IOException {
+        out.println(line);
+        line = in.readLine();
+        System.out.println(line);
+    }
+    public void exit() throws IOException{
+        input.close();
+        out.close();
+        socket.close();
+        System.exit(0);
+    }
+    public void running() {
+
+        // keep reading until "Over" is input
+        try
+        {
+            line = input.readLine();
+            switch(line) {
+                case "1":{
+                    sendMessage();
+                    break;
+                }case "2": {
+                    receiveMessage();
+                    break;
+                }case "3":
+                    line = "Over";
+                    out.println(line);
+                    break;
+                default:
+                    break;
+            }
+
         }
         catch(IOException i)
         {
             System.out.println(i);
         }
 
-        // keep reading until "Over" is input
-        while (!line.equals("Over"))
-        {
-            try
-            {
-                mainMenu.DisplayMenu();
-                line = input.readLine();
-                switch(line) {
-                    case "1":{
-                        out.writeUTF(line);
-                        System.out.println("Put your message here.");
-                        line = input.readLine();
-                        out.writeUTF(line);
-                        break;
-                    }case "2": {
-                        /**out.writeUTF(line);
-                        line = in.readUTF();
-                        System.out.println(line);*/
-                        /**InputStream is = socket.getInputStream();
-                        InputStreamReader isr = new InputStreamReader(is);
-                        BufferedReader br = new BufferedReader(isr);
-                        String message = br.readLine();
-                        System.out.println("Message received from the server : " +message);*/
-                        line = in.readLine();
-                        System.out.println(line);
-                        break;
-                    }case "3":
-                        line = "Over";
-                        out.writeUTF(line);
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-            catch(IOException i)
-            {
-                System.out.println(i);
-            }
-        }
 
         // close the connection
         try
         {
-            input.close();
-            out.close();
-            socket.close();
+            if(line.equals("Over"))
+                exit();
         }
         catch(IOException i)
         {

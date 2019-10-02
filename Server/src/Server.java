@@ -6,8 +6,8 @@ public class Server
     //initialize socket and input stream 
     private Socket          socket   = null;
     private ServerSocket    server   = null;
-    private DataInputStream in       =  null;
-    private DataOutputStream out     =  null;
+    private BufferedReader in       =  null;
+    private PrintWriter out     =  null;
     private String line = "";
     private String history = "";
 
@@ -26,20 +26,20 @@ public class Server
             System.out.println("Client accepted");
 
             // takes input from the client socket 
-            in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
-            out = new DataOutputStream( new BufferedOutputStream(socket.getOutputStream()));
+            in = new BufferedReader( new InputStreamReader(socket.getInputStream()));
+            out = new PrintWriter( socket.getOutputStream(),true);
             // reads message from client until "Over" is sent 
             while (!line.equals("Over"))
             {
 
                 try
                 {
-                    line = in.readUTF();
+                    line = in.readLine();
                     switch (line) {
                         case "1":
-                            line = in.readUTF();
+                            line = in.readLine();
                             System.out.println(line);
-                            history += line;
+                            history = history + "\n" + line;
                             break;
                         case "2":
                             /**out.writeUTF(history);*/
@@ -49,7 +49,9 @@ public class Server
                             bw.write(history);
                             System.out.println("Message sent to the client is "+history);
                             bw.flush();*/
-                            out.writeUTF(history);
+                            System.out.println(line);
+                            out.println(history);
+                            out.flush();
 
                             //System.out.println("Not implemented yet");
                             break;

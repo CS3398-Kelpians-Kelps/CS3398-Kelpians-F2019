@@ -1,9 +1,14 @@
 public class GUI {
     //currently not "graphic"
     private String menu = "1) Send Message\n2) Receive Message\n3) Close";
-    public GUI() {
+    Client client = null;
+    public GUI(String address) {
+        client = new Client(address,5000 );
     }
     public void DisplayMenu(){
-        System.out.println(menu);
+        while(true){
+            System.out.println(menu);
+            client.running();
+        }
     }
 }
