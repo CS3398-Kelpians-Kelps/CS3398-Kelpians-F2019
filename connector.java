@@ -47,11 +47,24 @@ class Connector {
     }
   }
 
+  public void delete() {
+    try {
+      String sqlDelete = "delete from fake_data where id = 1";
+      System.out.println("The SQL statement is: " + sqlDelete + "\n");  // Echo for debugging
+      int countDeleted = myStatement.executeUpdate(sqlDelete);
+      System.out.println(countDeleted + " records deleted.\n");
+      query();
+    } catch(Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
   public static void main(String[] args) {
     try {
       Connector connection = new Connector();
       connection.query();
       connection.update();
+      connection.delete();
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
