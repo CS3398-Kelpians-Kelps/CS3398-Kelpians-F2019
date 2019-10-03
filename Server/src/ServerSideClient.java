@@ -33,7 +33,12 @@ public class ServerSideClient implements IClient, Runnable{
 	}
 
 	public void stop(){
-		running = false;
+		try{
+			running = false;
+			in.close();
+			out.close();
+			clientSocket.close();
+		}catch(Exception e){System.out.println("ServerSideClient.stop | ERR: " + e.getStackTrace()[1].getLineNumber());}
 	}
 
 	public String getIP(){

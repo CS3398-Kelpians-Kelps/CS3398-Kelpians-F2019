@@ -30,9 +30,8 @@ public class Server implements IServer, Runnable{
 	}
 
 	public void process(String data){
-		//for(INetworkListener list : listeners)
-			//list.process(data, this);
-			return;
+		System.out.println(data);
+		broadcast(data);
 	}
 
 	public void run(){
@@ -43,6 +42,7 @@ public class Server implements IServer, Runnable{
 			while(running){
 				Socket clientSocket = listener.accept();
 				ServerSideClient serverSideClient = new ServerSideClient(this, clientSocket);
+				System.out.println(serverSideClient.getIP() + " has connected!");
 				clients.add(serverSideClient);
 				Thread client = new Thread(serverSideClient);
 				client.start();
@@ -52,7 +52,12 @@ public class Server implements IServer, Runnable{
 	}
 
 	public void stop(){
-		running = false;
+		try{
+			for(ServerSideClient ssc : clients)
+				ssc.stop();
+			listener.close();
+			running = false;
+		}catch(Exception e){System.out.println("Server.stop | ERR: " + e.getStackTrace()[1].getLineNumber());}
 
 	}
 
