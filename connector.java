@@ -21,10 +21,12 @@ class Connector {
     }
   }
   //TODO Add id / row selection
-  public void query() {
+  public void query(String fields, String table) {
     try {
+      //create sql statement
+      String sql = "Select " + fields + " from " + table;
       //Query
-      ResultSet myResultSet=myStatement.executeQuery("Select * from fake_data");
+      ResultSet myResultSet=myStatement.executeQuery(sql);
       //output result
       while(myResultSet.next()) {
         System.out.println("Name: " + myResultSet.getString("name"));
@@ -41,7 +43,7 @@ class Connector {
       //countUpdated is number of rows updated
       int countUpdated = myStatement.executeUpdate(strUpdate);
       System.out.println(countUpdated + " records affected.\n");
-      query();
+      query("*", "fake_data");
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
@@ -53,7 +55,7 @@ class Connector {
       System.out.println("The SQL statement is: " + sqlDelete + "\n");  // Echo for debugging
       int countDeleted = myStatement.executeUpdate(sqlDelete);
       System.out.println(countDeleted + " records deleted.\n");
-      query();
+      query("*", "fake_data");
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
@@ -61,11 +63,11 @@ class Connector {
   //TODO Add id / row selection
   public void insert() {
     try {
-      String sqlInsert = "insert into fake_data values (1, 'Name_inserted')";
+      String sqlInsert = "insert into fake_data values (NULL, 'Name_inserted')";
       System.out.println("The SQL statement is: " + sqlInsert + "\n");  // Echo for debugging
       int countInserted = myStatement.executeUpdate(sqlInsert);
       System.out.println(countInserted + " records inserted.\n");
-      query();
+      query("*", "fake_data");
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
@@ -74,7 +76,7 @@ class Connector {
   public static void main(String[] args) {
     try {
       Connector connection = new Connector();
-      connection.query();
+      connection.query("*", "fake_data");
       connection.update();
       connection.insert();
       connection.delete();

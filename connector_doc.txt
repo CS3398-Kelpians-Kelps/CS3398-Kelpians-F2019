@@ -4,9 +4,9 @@ Documentation to setup mysql and run the connector.
 
 Notes:
 This is on a local machine, using linux (Anything DEB based should work).
-If run on a different machine, different root password is needed.
+If run on a different machine, different root password is needed. I'm using 'kelpians'
 This connector will only work with the DB / tables / columns I have setup for testing. More info below.
-Current functionality includes simple queries. Later in development the class can be changed for what is needed.
+Current functionality includes static queries/inserts/updates/deletes.
 
 Installations:
   sudo apt-get install openjdk-8-jdk
