@@ -34,10 +34,24 @@ class Connector {
     }
   }
 
+  public void update() {
+    try {
+      //
+      String strUpdate = "update fake_data set name = 'new_name' where id = 1";
+      //countUpdated is number of rows updated
+      int countUpdated = myStatement.executeUpdate(strUpdate);
+      System.out.println(countUpdated + " records affected.\n");
+      query();
+    } catch(Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
   public static void main(String[] args) {
     try {
       Connector connection = new Connector();
       connection.query();
+      connection.update();
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
