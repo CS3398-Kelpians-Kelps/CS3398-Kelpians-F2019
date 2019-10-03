@@ -37,3 +37,7 @@ Compile:
 
 Run:
   java -cp .:mysql-connector-java-8.0.17.jar Connector
+
+TODO:
+  Currently all methods are static. Will refactor to allow dynamic allocation
+  of Table / Columns / fields.

@@ -20,7 +20,7 @@ class Connector {
       System.out.println(e.getMessage());
     }
   }
-
+  //TODO Add id / row selection
   public void query() {
     try {
       //Query
@@ -33,7 +33,7 @@ class Connector {
       System.out.println(e.getMessage());
     }
   }
-
+  //TODO Add id / row selection
   public void update() {
     try {
       //
@@ -46,7 +46,7 @@ class Connector {
       System.out.println(e.getMessage());
     }
   }
-
+  //TODO Add id / row selection
   public void delete() {
     try {
       String sqlDelete = "delete from fake_data where id = 1";
@@ -58,7 +58,7 @@ class Connector {
       System.out.println(e.getMessage());
     }
   }
-
+  //TODO Add id / row selection
   public void insert() {
     try {
       String sqlInsert = "insert into fake_data values (1, 'Name_inserted')";
