@@ -1,21 +1,43 @@
 import java.sql.*;
 
 class Connector {
-  public static void main(String ... args) {
+  String dbUrl;
+  String username;
+  String password;
+  Connection myConnection;
+  Statement myStatement;
+
+  public Connector() {
+    this.dbUrl = "jdbc:mysql://localhost:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    this.username = "root";
+    this.password = "32a5jsk69!";
     try {
-      String dbUrl="jdbc:mysql://localhost:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-      String username="root";
-      String password="password";
       //get connection
-      Connection myConnection=DriverManager.getConnection(dbUrl, username, password);
-      //create statement object
-      Statement myStatement=myConnection.createStatement();
+      this.myConnection = DriverManager.getConnection(dbUrl, username, password);
+      //create statement obj
+      this.myStatement = myConnection.createStatement();
+    } catch(Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  public void query() {
+    try {
       //Query
       ResultSet myResultSet=myStatement.executeQuery("Select * from fake_data");
-      //process result
+      //output result
       while(myResultSet.next()) {
         System.out.println("Name: " + myResultSet.getString("name"));
       }
+    } catch(Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
+  public static void main(String[] args) {
+    try {
+      Connector connection = new Connector();
+      connection.query();
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
