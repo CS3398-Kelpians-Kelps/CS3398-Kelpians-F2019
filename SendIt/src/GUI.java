@@ -3,7 +3,7 @@ public class GUI {
     private String menu = "1) Send Message\n2) Receive Message\n3) Close";
     Client client = null;
     public GUI(String address) {
-        client = new Client(address,5000 );
+        client = new Client(address,1337 );
     }
     public void DisplayMenu(){
         while(true){
