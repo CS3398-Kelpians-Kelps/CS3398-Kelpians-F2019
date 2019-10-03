@@ -59,11 +59,24 @@ class Connector {
     }
   }
 
+  public void insert() {
+    try {
+      String sqlInsert = "insert into fake_data values (1, 'Name_inserted')";
+      System.out.println("The SQL statement is: " + sqlInsert + "\n");  // Echo for debugging
+      int countInserted = myStatement.executeUpdate(sqlInsert);
+      System.out.println(countInserted + " records inserted.\n");
+      query();
+    } catch(Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
   public static void main(String[] args) {
     try {
       Connector connection = new Connector();
       connection.query();
       connection.update();
+      connection.insert();
       connection.delete();
     } catch(Exception e) {
       System.out.println(e.getMessage());
