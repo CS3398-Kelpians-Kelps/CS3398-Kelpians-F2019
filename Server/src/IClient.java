@@ -8,4 +8,6 @@ public interface IClient{
 	//Stops the client
 	public void stop();
 
+	public void process(String data);
+
 }

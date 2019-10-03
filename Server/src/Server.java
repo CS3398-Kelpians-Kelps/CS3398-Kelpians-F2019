@@ -29,10 +29,10 @@ public class Server implements IServer, Runnable{
 		}
 	}
 
-	public void process(String data){
-		System.out.println(data);
+	/**public void process(String data, ServerSideClient ssc){
+		System.out.println(ssc.getIP() + ": " + data);
 		broadcast(data);
-	}
+	}**/
 
 	public void run(){
 		try{
