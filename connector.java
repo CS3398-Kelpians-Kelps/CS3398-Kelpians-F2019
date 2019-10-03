@@ -10,7 +10,7 @@ class Connector {
   public Connector() {
     this.dbUrl = "jdbc:mysql://localhost:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     this.username = "root";
-    this.password = "32a5jsk69!";
+    this.password = "kelpians";
     try {
       //get connection
       this.myConnection = DriverManager.getConnection(dbUrl, username, password);
