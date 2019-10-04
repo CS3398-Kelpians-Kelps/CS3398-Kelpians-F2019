@@ -32,14 +32,14 @@ class Connector {
       System.out.println(e.getMessage());
     }
   }
-  //TODO Add id / row selection
-  public void update() {
+
+  public void update(String table, String field, String id, String newValue) {
     try {
-      //
-      String strUpdate = "update fake_data set name = 'new_name' where id = 1";
+      //create sql Statement
+      String sql = "update " + table + " set " + field + " = " + newValue + " where id = " + id;
       //countUpdated is number of rows updated
-      int countUpdated = myStatement.executeUpdate(strUpdate);
-      System.out.println(countUpdated + " records affected.\n");
+      int countUpdated = myStatement.executeUpdate(sql);
+      System.out.println(countUpdated + " records affected.");
       query("*", "fake_data");
     } catch(Exception e) {
       System.out.println(e.getMessage());
@@ -74,9 +74,9 @@ class Connector {
     try {
       Connector connection = new Connector();
       connection.query("*", "fake_data");
-      connection.update();
-      connection.insert();
-      connection.delete();
+      connection.update("fake_data", "name", "3", "'my_new_name'" );
+      //connection.insert();
+      //connection.delete();
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
