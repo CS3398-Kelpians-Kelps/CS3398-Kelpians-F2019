@@ -1,16 +1,13 @@
 import java.sql.*;
 
 class Connector {
-  String dbUrl;
-  String username;
-  String password;
+  private static final String dbUrl = "jdbc:mysql://localhost:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+  private static final String username = "root";
+  private static final String password = "kelpians";
   Connection myConnection;
   Statement myStatement;
 
   public Connector() {
-    this.dbUrl = "jdbc:mysql://localhost:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    this.username = "root";
-    this.password = "kelpians";
     try {
       //get connection
       this.myConnection = DriverManager.getConnection(dbUrl, username, password);
@@ -20,12 +17,12 @@ class Connector {
       System.out.println(e.getMessage());
     }
   }
-  //TODO Add id / row selection
-  public void query(String fields, String table) {
+
+  public void query(String field, String table) {
     try {
       //create sql statement
-      String sql = "Select " + fields + " from " + table;
-      //Query
+      String sql = "Select " + field + " from " + table;
+      //execute query
       ResultSet myResultSet=myStatement.executeQuery(sql);
       //output result
       while(myResultSet.next()) {
