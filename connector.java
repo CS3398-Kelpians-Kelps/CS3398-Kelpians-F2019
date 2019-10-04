@@ -28,15 +28,16 @@ class Connector {
       while(myResultSet.next()) {
         System.out.println("Name: " + myResultSet.getString("name"));
       }
+      System.out.println("");
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
   }
 
-  public void update(String table, String field, String id, String newValue) {
+  public void update(String table, String row, String id, String newValue) {
     try {
       //create sql Statement
-      String sql = "update " + table + " set " + field + " = " + newValue + " where id = " + id;
+      String sql = "update " + table + " set " + row + " = " + newValue + " where id = " + id;
       //countUpdated is number of rows updated
       int countUpdated = myStatement.executeUpdate(sql);
       System.out.println(countUpdated + " records affected.");
@@ -46,12 +47,11 @@ class Connector {
     }
   }
   //TODO Add id / row selection
-  public void delete() {
+  public void delete(String table, String id) {
     try {
-      String sqlDelete = "delete from fake_data where id = 1";
-      System.out.println("The SQL statement is: " + sqlDelete + "\n");  // Echo for debugging
+      String sqlDelete = "delete from " + table + " where id = " + id;
       int countDeleted = myStatement.executeUpdate(sqlDelete);
-      System.out.println(countDeleted + " records deleted.\n");
+      System.out.println(countDeleted + " records deleted.");
       query("*", "fake_data");
     } catch(Exception e) {
       System.out.println(e.getMessage());
@@ -74,9 +74,9 @@ class Connector {
     try {
       Connector connection = new Connector();
       connection.query("*", "fake_data");
-      connection.update("fake_data", "name", "3", "'my_new_name'" );
+      //connection.update("fake_data", "name", "3", "'my_new_name'" );
       //connection.insert();
-      //connection.delete();
+      connection.delete("fake_data", "2");
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
