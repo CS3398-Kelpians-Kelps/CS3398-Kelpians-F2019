@@ -10,8 +10,6 @@ The purpose of this project is to allow users to send data such as links, text f
 * Java
 * SQL
 * Some type of front end language/framework
-<br />
-
 ## Features
 * Users can send data between their devices
 * Admin has a dashboard to see metadata
