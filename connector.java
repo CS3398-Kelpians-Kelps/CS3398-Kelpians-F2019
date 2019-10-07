@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.Scanner;
 
 class Connector {
   private static final String dbUrl = "jdbc:mysql://localhost:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
@@ -46,7 +47,7 @@ class Connector {
       System.out.println(e.getMessage());
     }
   }
-  //TODO Add id / row selection
+
   public void delete(String table, String id) {
     try {
       String sqlDelete = "delete from " + table + " where id = " + id;
@@ -57,10 +58,10 @@ class Connector {
       System.out.println(e.getMessage());
     }
   }
-  //TODO Add id / row selection
-  public void insert() {
+
+  public void insert(String table, String values) {
     try {
-      String sqlInsert = "insert into fake_data values (NULL, 'Name_inserted')";
+      String sqlInsert = "insert into " + table + " values (NULL, " + values + ")";
       System.out.println("The SQL statement is: " + sqlInsert + "\n");  // Echo for debugging
       int countInserted = myStatement.executeUpdate(sqlInsert);
       System.out.println(countInserted + " records inserted.\n");
@@ -70,13 +71,49 @@ class Connector {
     }
   }
 
+  public void driver(Connector connection) {
+    Scanner scan = new Scanner(System.in);
+
+    boolean run = true;
+    while (run) {
+      System.out.println("Enter 1 for Query\nEnter 2 for update\nEnter 3 for insert\nEnter 4 for delete\n5 to exit");
+      int choice = scan.nextInt();
+      scan.nextLine();
+      switch(choice) {
+        case 1:
+          System.out.println("Enter field(s) to query");
+          String queryField = scan.nextLine();
+          connection.query(queryField, "fake_data");
+          break;
+        case 2:
+          System.out.println("Enter field(s) to update");
+          String updateField = scan.nextLine();
+          System.out.println("Enter new value");
+          String updateValue = scan.nextLine();
+          System.out.println("Enter id ");
+          String updateID = scan.nextLine();
+          connection.update("fake_data", updateField, updateID, updateValue);
+          break;
+        case 3:
+          //connection.insert("fake_data", "'name'");
+          break;
+        case 4:
+          //connection.delete("fake_data", "2");
+          break;
+        case 5:
+          run = false;
+          break;
+        default:
+          System.out.println("Choose a better option next time");
+          break;
+      }
+    }
+  }
+
   public static void main(String[] args) {
     try {
       Connector connection = new Connector();
-      connection.query("*", "fake_data");
-      //connection.update("fake_data", "name", "3", "'my_new_name'" );
-      //connection.insert();
-      connection.delete("fake_data", "2");
+      connection.driver(connection);
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
