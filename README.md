@@ -10,7 +10,7 @@ https://cs3398f19kelpians.slack.com/files/UMKS7G4V9/FN49UTEBD/4c8a71a2da50713d28
 ## Technologies
 <ul>
   <li>https://www.mysql.com/</li>
-  <li>http://www.cplusplus.com/</li>
+  <li>Java</li>
 </ul>
 
 ## Features
