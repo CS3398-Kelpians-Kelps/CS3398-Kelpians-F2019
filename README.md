@@ -16,6 +16,7 @@ We are doing this because we feel like transferring data via email is a hinderen
 ## Features
 <ul>
   <li>Desktop Server - A server to connect the clients, run by the admin.</li>
+  <li>Desktop Interface - Allows users to interact and navigate with the program.
 </ul>
 
 ## Accomplishments
