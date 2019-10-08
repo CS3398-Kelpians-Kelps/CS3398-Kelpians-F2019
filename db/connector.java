@@ -27,6 +27,7 @@ class Connector {
       ResultSet myResultSet=myStatement.executeQuery(sql);
       //output result
       while(myResultSet.next()) {
+        System.out.println("Id: " + myResultSet.getInt("id"));
         System.out.println("Name: " + myResultSet.getString("name"));
       }
       System.out.println("");
@@ -42,7 +43,7 @@ class Connector {
       //countUpdated is number of rows updated
       int countUpdated = myStatement.executeUpdate(sql);
       System.out.println(countUpdated + " records affected.");
-      query("*", "fake_data");
+      query("*", "user");
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
@@ -53,7 +54,7 @@ class Connector {
       String sqlDelete = "delete from " + table + " where id = " + id;
       int countDeleted = myStatement.executeUpdate(sqlDelete);
       System.out.println(countDeleted + " records deleted.");
-      query("*", "fake_data");
+      query("*", "user");
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
@@ -65,7 +66,7 @@ class Connector {
       System.out.println("The SQL statement is: " + sqlInsert + "\n");  // Echo for debugging
       int countInserted = myStatement.executeUpdate(sqlInsert);
       System.out.println(countInserted + " records inserted.\n");
-      query("*", "fake_data");
+      query("*", "user");
     } catch(Exception e) {
       System.out.println(e.getMessage());
     }
@@ -83,7 +84,7 @@ class Connector {
         case 1:
           System.out.println("Enter field(s) to query");
           String queryField = scan.nextLine();
-          connection.query(queryField, "fake_data");
+          connection.query(queryField, "user");
           break;
         case 2:
           System.out.println("Enter field(s) to update");
@@ -92,13 +93,13 @@ class Connector {
           String updateValue = scan.nextLine();
           System.out.println("Enter id ");
           String updateID = scan.nextLine();
-          connection.update("fake_data", updateField, updateID, updateValue);
+          connection.update("user", updateField, updateID, updateValue);
           break;
         case 3:
-          //connection.insert("fake_data", "'name'");
+          //connection.insert("user", "'name'");
           break;
         case 4:
-          //connection.delete("fake_data", "2");
+          //connection.delete("user", "2");
           break;
         case 5:
           run = false;
