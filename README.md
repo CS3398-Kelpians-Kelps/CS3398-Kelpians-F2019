@@ -17,3 +17,8 @@ https://cs3398f19kelpians.slack.com/files/UMKS7G4V9/FN49UTEBD/4c8a71a2da50713d28
 <ul>
   <li>Desktop Server - A server to connect the clients, run by the admin.</li>
 </ul>
+
+## Accomplishments
+<ul>
+  <li>Asa Murphy: Developed the user home GUI and responsible for implementing computer directory accessbility, and linking text GUI            feature .</li>
+</ul>
