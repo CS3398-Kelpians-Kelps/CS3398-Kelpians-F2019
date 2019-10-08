@@ -5,7 +5,8 @@ The target group could be for students and the general working class who may nee
 We are doing this because we feel like transferring data via email is a hinderence to an individuals productivity and effieicency at getting work done.<br>
 
 ## General Info
-https://cs3398f19kelpians.slack.com/files/UMKS7G4V9/FN49UTEBD/4c8a71a2da50713d282fd24714757b06.png <!--Application logo -->
+https://cs3398f19kelpians.slack.com/files/UMKS7G4V9/FN49UTEBD/4c8a71a2da50713d282fd24714757b06.png
+![Logo](./logo/logo.png) <!--Application logo --> <!--Application logo -->
 
 ## Technologies
 <ul>
