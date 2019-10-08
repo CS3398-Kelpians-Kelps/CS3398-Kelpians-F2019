@@ -21,14 +21,14 @@ Commands to setup specific testing DB used in connector class:
   show databases;
     - Check that db was created
   use test;
-  create table user(
+  create table fake_data(
     -> id int auto_increment primary key,
     -> name char(20) not null
     -> );
   show tables;
     - Check that table was created
-  insert into fake_data values(NULL, "alex");
-  select * from user;
+  insert into fake_data values(1, "alex");
+  select * from fake_data;
     -Check that data was added
   exit;
 
