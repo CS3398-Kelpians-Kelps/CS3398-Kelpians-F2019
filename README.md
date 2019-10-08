@@ -28,4 +28,7 @@ We are doing this because we feel like transferring data via email is a hinderen
   <li>
     <strong>Chassidy Foreman:</strong> Created the basic text GUI with button functionality to be handed off to the team for additional linking to server and other GUIs.
   </li>
+  <li>
+    <strong>Zachary Goldberg:</strong> Created the server as well as contributed to linking all parts together.
+  </li>
 </ul>
