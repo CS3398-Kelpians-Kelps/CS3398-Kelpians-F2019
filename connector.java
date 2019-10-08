@@ -96,10 +96,14 @@ class Connector {
           connection.update("user", updateField, updateID, updateValue);
           break;
         case 3:
-          //connection.insert("user", "'name'");
+          System.out.println("Enter field(s) to insert");
+          String insertField = scan.nextLine();
+          connection.insert("user", insertField);
           break;
         case 4:
-          //connection.delete("user", "2");
+          System.out.println("Enter id of object to delete");
+          String deleteId = scan.nextLine();
+          connection.delete("user", deleteId);
           break;
         case 5:
           run = false;
