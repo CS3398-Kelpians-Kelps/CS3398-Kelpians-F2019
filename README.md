@@ -31,4 +31,7 @@ We are doing this because we feel like transferring data via email is a hinderen
   <li>
     <strong>Zachary Goldberg:</strong> Created the server and linked all pieces together. The next step is to create a method for handling other files types. 
   </li>
+  <li>
+    <strong>Patrick Parker:</strong> 1. Coding of client side had some issues due to not also having the final server code to work with. 2. Not having a set design to work from made it hard to know what needed. 3. Take more time to finalize design patterns, discuss with teammates who have dependencies with your project, and better divide up workloads.
+  </li>
 </ul>
