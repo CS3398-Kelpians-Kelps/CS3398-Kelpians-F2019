@@ -5,7 +5,8 @@ The target group could be for students and the general working class who may nee
 We are doing this because we feel like transferring data via email is a hinderence to an individuals productivity and effieicency at getting work done.<br>
 
 ## General Info
-![Logo](./logo/logo.png) <!--Application logo -->
+![Logo](./logo/logo.png) <!--Application logo --> <!--Application logo -->
+
 
 ## Technologies
 <ul>
@@ -21,8 +22,7 @@ We are doing this because we feel like transferring data via email is a hinderen
 
 ## Accomplishments
 <ul>
-  <li><strong>Asa Murphy:</strong> Developed the user home GUI and responsible for implementing computer directory accessbility, and linking text GUI            feature.</li>
-  <li>
+  <li><strong>Asa Murphy:</strong> Developed the user home GUI and responsible for implementing computer directory accessbility, and linking the text GUI feature. (Files Developed: ChooseFile.java, SenditGui.java, sendit-icon.png, sendit.png,)</li>
   <strong>Alex Key:</strong> All files inside db directory were done by Alex Key. This includes the connector.java, as well as the connector_doc.txt. A mySQL database was setup on my local machine to test the connector, but theres no code for that. The artifact is used for querying / inserting / updating / deleting table columns in our database. My next step will be to install and setup the db on our server, as soon as the server is ready.
   </li>
   <li>
