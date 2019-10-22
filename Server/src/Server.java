@@ -7,6 +7,8 @@ public class Server implements IServer, Runnable{
 	private boolean running;
 	private ServerSocket listener;
 	private ArrayList<ServerSideClient> clients;
+	private ArrayList<User> users;
+	private long startTime;
 	//private ArrayList<INetworkListener> listeners;
 
 	public Server(int port){
@@ -16,9 +18,32 @@ public class Server implements IServer, Runnable{
 		//listeners.add(new TextListener());
 	}
 
+	public String getConnected(){
+		String ret = "";
+		for(ServerSideClient ssc : clients){
+			ret += ssc.getIP() + "\n"
+		}
+		return ret;
+	}
+
 	public void broadcast(String data){
 		for(ServerSideClient ssc : clients)
 			ssc.send(data);
+	}
+
+	public long getUpTime(){
+		return System.nanoTime() - startTime;
+	}
+
+	public ArrayList<Report> getReport(){
+		ArrayList<Report> reports = new ArrayList<Report>();
+		for(User u : users){
+			reports.add(new Report(u));
+		}
+	}
+
+	public Report getReport(User u){
+		return new Report(u);
 	}
 
 	public void send(String data, String dest){
@@ -38,6 +63,7 @@ public class Server implements IServer, Runnable{
 		try{
 			System.out.println("Server is starting!");
 			listener = new ServerSocket(port);
+			startTime = System.nanoTime();
 
 			while(running){
 				Socket clientSocket = listener.accept();
@@ -46,6 +72,7 @@ public class Server implements IServer, Runnable{
 				clients.add(serverSideClient);
 				Thread client = new Thread(serverSideClient);
 				client.start();
+				users.add(client.getUser());
 
 			}
 		}catch(Exception e){System.out.println("Server.run | ERR: " + e.getStackTrace()[1].getLineNumber());}

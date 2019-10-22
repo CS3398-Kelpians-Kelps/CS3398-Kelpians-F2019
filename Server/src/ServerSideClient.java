@@ -9,15 +9,18 @@ public class ServerSideClient implements IClient, Runnable{
 	private PrintWriter out;
 	private Socket clientSocket;
 	private String IP;
+	private User user;
 
 	public ServerSideClient(IServer server, Socket socket){
 		try{
+			this.user = user;
 			this.server = server;
 			clientSocket = socket;
 			IP = clientSocket.getRemoteSocketAddress().toString();
 			running = true;
 			in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			out = new PrintWriter(clientSocket.getOutputStream(),true);
+			User user = new User(IP);
 		}catch(Exception e){System.out.println("ServerSideClient | ERR: " + e.getStackTrace()[1].getLineNumber());}
 	}
 
@@ -52,6 +55,10 @@ public class ServerSideClient implements IClient, Runnable{
 		server.broadcast(data);
 		System.out.println(IP + ": " + data);
 
+	}
+
+	public User getUser(){
+		return user;
 	}
 
 }
