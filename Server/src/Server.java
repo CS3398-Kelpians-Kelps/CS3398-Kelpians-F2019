@@ -7,14 +7,15 @@ public class Server implements IServer, Runnable{
 	private boolean running;
 	private ServerSocket listener;
 	private ArrayList<ServerSideClient> clients;
-	private ArrayList<User> users;
 	private long startTime;
+	private Connector con;
 	//private ArrayList<INetworkListener> listeners;
 
 	public Server(int port){
 		this.port = port;
 		running = true;
 		clients = new ArrayList<ServerSideClient>();
+		con = new Connector();
 		//listeners.add(new TextListener());
 	}
 
@@ -37,9 +38,6 @@ public class Server implements IServer, Runnable{
 
 	public ArrayList<Report> getReport(){
 		ArrayList<Report> reports = new ArrayList<Report>();
-		for(User u : users){
-			reports.add(new Report(u));
-		}
 		return reports;
 	}
 
@@ -53,6 +51,23 @@ public class Server implements IServer, Runnable{
 				ssc.send(data);
 			}
 		}
+	}
+
+	public boolean login(ServerSideClient ssc){
+		String results = con.query("usernames", "username");
+		String[] split = results.split("~");
+		for(String username : split){
+			if(username.equals(ssc.getUser())){
+				String IPs = con.runQuery("select ip from IPs where username = \'"+ username +"\';", "IP");
+				String[] split2 = IPs.split("~");
+				for(String ip : split2){
+					if(ip.equals(ssc.getIP())){
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 
 	/**public void process(String data, ServerSideClient ssc){
@@ -73,7 +88,6 @@ public class Server implements IServer, Runnable{
 				clients.add(serverSideClient);
 				Thread client = new Thread(serverSideClient);
 				client.start();
-
 			}
 		}catch(Exception e){System.out.println("Server.run | ERR: " + e.getStackTrace()[1].getLineNumber());}
 	}

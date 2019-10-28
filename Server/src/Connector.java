@@ -1,22 +1,47 @@
 import java.sql.*;
+import javax.sql.*;
 import java.util.*;
 
+
 class Connector {
-  private static final String dbUrl = "jdbc:mysql://localhost:3306/login";
+  private static final String dbUrl = "jdbc:mysql://127.0.0.1:3306/users";
   private static final String username = "root";
   private static final String password = "kelpians";
   Connection myConnection;
   Statement myStatement;
 
+   static {
+      try {
+         Class.forName("com.mysql.cj.jdbc.Driver");
+      }catch(ClassNotFoundException ex) {
+        System.err.println("Unable to load MySQL Driver");
+      }
+   }
+
   public Connector() {
     try {
       //get connection
-      Class.forName("com.mysql.jdbc.Driver");
+      //Class.forName("mysql-connector-java-8.0.17.jar");
       myConnection = DriverManager.getConnection(dbUrl, username, password);
       //create statement obj
       myStatement = myConnection.createStatement();
     } catch(Exception e) {
       System.out.println(e.getMessage());
+    }
+  }
+
+  public String runQuery(String qry, String field){
+     try{
+
+       ResultSet myResultSet=myStatement.executeQuery(qry);
+       String results = "";
+       while(myResultSet.next()) {
+          results += myResultSet.getString(field) + "~";
+       }
+       return results;
+    }catch(Exception e) {
+      System.out.println(e.getMessage());
+      return null;
     }
   }
 
@@ -65,7 +90,7 @@ class Connector {
 
   public void insert(String table, String field, String values) {
     try {
-      String sqlInsert = "insert into " + table + " (" + field+ ") values ("+values+")";
+      String sqlInsert = "INSERT INTO " + table + "(" + field +") VALUES(\'" + values + "\')";
       //System.out.println("The SQL statement is: " + sqlInsert + "\n");  // Echo for debugging
       int countInserted = myStatement.executeUpdate(sqlInsert);
       //System.out.println(countInserted + " records inserted.\n");

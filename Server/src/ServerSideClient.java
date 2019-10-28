@@ -3,24 +3,26 @@ import java.util.*;
 import java.io.*;
 
 public class ServerSideClient implements IClient, Runnable{
-	private IServer server;
+	private Server server;
 	private boolean running;
 	private BufferedReader in;
 	private PrintWriter out;
 	private Socket clientSocket;
 	private String IP;
-	private User user;
+	private String username;
+	private boolean loggedin;
 
-	public ServerSideClient(IServer server, Socket socket){
+	public ServerSideClient(Server server, Socket socket){
 		try{
-			this.user = user;
+			//this.user = user;
 			this.server = server;
 			clientSocket = socket;
+			username = "highlow";
 			IP = clientSocket.getRemoteSocketAddress().toString();
+			loggedin = server.login(this);
 			running = true;
 			in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			out = new PrintWriter(clientSocket.getOutputStream(),true);
-			User user = new User(IP);
 		}catch(Exception e){System.out.println("ServerSideClient | ERR: " + e.getStackTrace()[1].getLineNumber());}
 	}
 
@@ -57,8 +59,8 @@ public class ServerSideClient implements IClient, Runnable{
 
 	}
 
-	public User getUser(){
-		return user;
+	public String getUser(){
+		return username;
 	}
 
 }
