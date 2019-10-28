@@ -18,20 +18,31 @@ public class Client implements Runnable{
     private String line = "";
     private BufferedReader in = null;
     private boolean running;
-    public ArrayList<String> buffer;
+    
+	//changes here
+	public ArrayList<Object> buffer;	//changed to object buffer
+	//object input and output
+	private ObjectOutputStream oos;
+	private ObjectInputStream ois;
+	
+	
+	
 
     // constructor to put ip address and port
     public Client(String address, int port) {
         // establish a connection
-        buffer = new ArrayList<String>();
+        buffer = new ArrayList<Object>();
         try {
            running = true;
             socket = new Socket(address, port);
-            //socket.setSoTimeout(3000);
             System.out.println("Connected");
             input = new DataInputStream(System.in);
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			
+			//making the input and output stream for objects
+			oos = new ObjectOutputStream(socket.getOutputStream());
+			ois = new ObjectInputStream(socket.getInputStream());
 
         } catch (UnknownHostException u) {
             System.out.println(u);
@@ -42,32 +53,25 @@ public class Client implements Runnable{
 
     }
     public void sendMessage(String s) throws IOException {
-        //System.out.println(s);
         out.println(s);
-        //out.flush();
-        //System.out.println("Put your message here.");
-        //line = input.readLine();
-        //out.println(line);
+		oos.writeObject(s);
     }
     public void process(String data){
-        //out.println(line);
-        //line = in.readLine();
-        //System.out.println(data);
         buffer.add(data);
     }
 
     public String getMessage(){
       String ret = "";
-      for(String str : buffer)
-         ret = ret + str + '\n';
+      for(Object str : buffer)
+         ret = ret + str.toString() + '\n';
       return ret;
    }
 
     public void run(){
       while(running){
-         //System.out.println("Running");
          try{
             process(in.readLine());
+			process((String) ois.readObject());
          }catch(Exception e){}
       }
    }
@@ -77,47 +81,10 @@ public class Client implements Runnable{
         running = false;
         input.close();
         out.close();
+		oos.close();
+		ois.close();
         socket.close();
         System.exit(0);
      }catch(Exception e){};
     }
-    /**public void running() {
-
-        // keep reading until "Over" is input
-        try
-        {
-            line = input.readLine();
-            switch(line) {
-                case "1":{
-                    sendMessage();
-                    break;
-                }case "2": {
-                    receiveMessage();
-                    break;
-                }case "3":
-                    line = "Over";
-                    out.println(line);
-                    break;
-                default:
-                    break;
-            }
-
-        }
-        catch(IOException i)
-        {
-            System.out.println(i);
-        }
-
-
-        // close the connection
-        try
-        {
-            if(line.equals("Over"))
-                exit();
-        }
-        catch(IOException i)
-        {
-            System.out.println(i);
-        }
-    }**/
 }
