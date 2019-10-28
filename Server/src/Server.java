@@ -21,7 +21,7 @@ public class Server implements IServer, Runnable{
 	public String getConnected(){
 		String ret = "";
 		for(ServerSideClient ssc : clients){
-			ret += ssc.getIP() + "\n"
+			ret += ssc.getIP() + "\n";
 		}
 		return ret;
 	}
@@ -40,9 +40,10 @@ public class Server implements IServer, Runnable{
 		for(User u : users){
 			reports.add(new Report(u));
 		}
+		return reports;
 	}
 
-	public Report getReport(User u){
+	public Report getUserReport(User u){
 		return new Report(u);
 	}
 
@@ -72,7 +73,6 @@ public class Server implements IServer, Runnable{
 				clients.add(serverSideClient);
 				Thread client = new Thread(serverSideClient);
 				client.start();
-				users.add(client.getUser());
 
 			}
 		}catch(Exception e){System.out.println("Server.run | ERR: " + e.getStackTrace()[1].getLineNumber());}
