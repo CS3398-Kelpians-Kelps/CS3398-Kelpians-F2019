@@ -1,3 +1,6 @@
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -19,6 +22,8 @@ public class Main {
 
         String m = (String) is.readObject();
         System.out.println(m);
+        BufferedImage image = ImageIO.read(ImageIO.createImageInputStream(is));
+        ImageIO.write(image, "PNG", new File("test.PNG"));
         m = "sending back to client";
         os.writeObject(m);
         socket.close();
