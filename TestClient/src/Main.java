@@ -30,6 +30,8 @@ public class Main {
         ObjectInputStream is = new ObjectInputStream(socket.getInputStream());
         String returnMessage = (String) is.readObject();
         System.out.println(returnMessage);
+        image = ImageIO.read(ImageIO.createImageInputStream(is));
+        ImageIO.write(image, "PNG", new File("returnedFromServer.PNG"));
         socket.close();
     }
 }

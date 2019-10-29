@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -26,6 +27,9 @@ public class Main {
         ImageIO.write(image, "PNG", new File("test.PNG"));
         m = "sending back to client";
         os.writeObject(m);
+        os.flush();
+        System.out.println("sending image back");
+        ImageIO.write(image, "PNG", os);
         socket.close();
     }
 
