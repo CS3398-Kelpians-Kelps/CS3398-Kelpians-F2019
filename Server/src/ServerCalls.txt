@@ -1,0 +1,9 @@
+Calls for Admin GUI
+getReport()
+	Returns an ArrayList of Reports
+getReport(User u)
+	Returns a Report for a specific User
+getUpTime()
+	Returns a long that is the up time in nanoseconds of the server
+getConnected()
+	Returns a String that contains the IP of all connected Users

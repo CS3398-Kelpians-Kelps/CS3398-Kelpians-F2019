@@ -2,7 +2,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 class Connector {
-  private static final String dbUrl = "jdbc:mysql://localhost:3306/test?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+  private static final String dbUrl = "jdbc:mysql://localhost:3306/login";
   private static final String username = "root";
   private static final String password = "kelpians";
   Connection myConnection;
@@ -27,8 +27,7 @@ class Connector {
       ResultSet myResultSet=myStatement.executeQuery(sql);
       //output result
       while(myResultSet.next()) {
-        System.out.println("ID: " + myResultSet.getInt("id"));
-        System.out.println("Name: " + myResultSet.getString("name"));
+        System.out.println("Uname: " + myResultSet.getString("Uname"));
       }
       System.out.println("");
     } catch(Exception e) {
@@ -96,14 +95,10 @@ class Connector {
           connection.update("user", updateField, updateID, updateValue);
           break;
         case 3:
-          System.out.println("Enter field(s) to insert");
-          String insertField = scan.nextLine();
-          connection.insert("user", insertField);
+          //connection.insert("user", "'name'");
           break;
         case 4:
-          System.out.println("Enter id of object to delete");
-          String deleteId = scan.nextLine();
-          connection.delete("user", deleteId);
+          //connection.delete("user", "2");
           break;
         case 5:
           run = false;
