@@ -25,7 +25,7 @@ We are doing this because we feel like transferring data via email is a hinderen
   <li><strong>Asa Murphy:</strong> Developed the user home GUI and responsible for implementing computer directory accessbility, and linking the text GUI feature. (Files Developed: ChooseFile.java, SenditGui.java, sendit-icon.png, sendit.png). Developed Admin GUI interface for backdoor server and application monitoring.</li>
   <strong>Alex Key:</strong> All files inside db directory were done by Alex Key. This includes the connector.java, as well as the connector_doc.txt. A mySQL database was setup on my local machine to test the connector, but theres no code for that. The artifact is used for querying / inserting / updating / deleting table columns in our database. My next step will be to install and setup the db on our server, as soon as the server is ready.
   <br>
-  <strong>Sprint 2:</strong>Designed user table for use in database. Next step will be too setup a subclass for Admin user, and store in DB.
+  <strong>Sprint 2:</strong>Designed user table for use in database and help setup database on server. Artifact: db_design branch: db_design.txt. This is used to create user's and log them in. Next step will be too setup a subclass for Admin user, and store in DB.
   </li>
   <li>
     <strong>Chassidy Foreman:</strong> Created the basic text GUI with button functionality to be handed off to the team for additional linking to server and other GUIs. Developed the login GUI to be linked to the updated Text GUI for the future client. The next step will be updating the layout of the text GUI to make it more appealing to the user.
