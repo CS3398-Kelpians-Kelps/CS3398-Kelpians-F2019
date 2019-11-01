@@ -32,6 +32,6 @@ We are doing this because we feel like transferring data via email is a hinderen
     <strong>Zachary Goldberg:</strong> Created the server and linked all pieces together. The next step is to create a method for handling other files types. 
   </li>
   <li>
-    <strong>Patrick Parker:</strong> 1. Coding of client side had some issues due to not also having the final server code to work with. 2. Not having a set design to work from made it hard to know what needed. 3. Take more time to finalize design patterns, discuss with teammates who have dependencies with your project, and better divide up workloads.
+    <strong>Patrick Parker:</strong> Sprint 1: Created Client side of program to link up to server. Sprint 2: Redid base code for server and client for sending and recieving objects instead of strings. Added in some functionality for image sending and recieving. Going Forward: Working on getting more features added and updating any code that could use refactoring.
   </li>
 </ul>
