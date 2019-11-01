@@ -1,0 +1,6 @@
+TABLES:
+  -USER:
+      -id, int, auto_increment, not null
+      -username, string, not null
+      -password, string, hashed, not null
+      -role, int(user / admin), not null
