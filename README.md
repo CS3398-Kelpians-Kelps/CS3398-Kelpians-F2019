@@ -26,7 +26,7 @@ We are doing this because we feel like transferring data via email is a hinderen
   <strong>Alex Key:</strong> All files inside db directory were done by Alex Key. This includes the connector.java, as well as the connector_doc.txt. A mySQL database was setup on my local machine to test the connector, but theres no code for that. The artifact is used for querying / inserting / updating / deleting table columns in our database. My next step will be to install and setup the db on our server, as soon as the server is ready.
   </li>
   <li>
-    <strong>Chassidy Foreman:</strong> Created the basic text GUI with button functionality to be handed off to the team for additional linking to server and other GUIs. 
+    <strong>Chassidy Foreman:</strong> Created the basic text GUI with button functionality to be handed off to the team for additional linking to server and other GUIs. Developed the login GUI to be linked to the updated Text GUI for the future client. The next step will be updating the layout of the text GUI to make it more appealing to the user.
   </li>
   <li>
     <strong>Zachary Goldberg:</strong> Created the server and linked all pieces together. The next step is to create a method for handling other files types. 
