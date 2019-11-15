@@ -4,7 +4,7 @@ import java.util.*;
 public class main{
 	public static void main(String[] args){
 		try{
-			int port = 12345;
+			int port = System.getenv("PORT");
 			Server server = new Server(port);
 			Thread s = new Thread(server);
 			s.start();
