@@ -21,10 +21,16 @@ public class Server implements IServer, Runnable{
 			ssc.send(data);
 	}
 
+	//Stub for DB
+	public void send(String data, String dest){
+
+	}
+
 	//Runs main function of the server, waits for connection then assigns relevant data and creates new ServerSideClient instance and thread
 	public void run(){
 		try{
 			listener = new ServerSocket(port);
+			System.out.println("Server is running!");
 			while(running){
 				Socket clientSocket = listener.accept();
 				ServerSideClient serverSideClient = new ServerSideClient(this, clientSocket);
