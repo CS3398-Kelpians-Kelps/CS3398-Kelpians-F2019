@@ -27,6 +27,8 @@ public class LoginWindow {
     JCheckBox showPassword = new JCheckBox("Show Password");
     JButton close = new JButton("Close");
     close.setBounds(300,160,100,30);
+    JButton account = new JButton("Sign-Up");
+    account.setBounds(220,200,100,30);
 
     login.addActionListener(new ActionListener(){
       public void actionPerformed(ActionEvent e){
@@ -34,6 +36,7 @@ public class LoginWindow {
         String password = pass.getText();
         if (username.equals("wow") && password.equals("omg")){
           logPanel.setText("Login - Welcome to sendIt.");
+
         }
         else {
           logPanel.setText("Login - Wrong user/password combo");
@@ -45,6 +48,12 @@ public class LoginWindow {
         System.exit(0);
       }
     });
+    account.addActionListener(new ActionListener(){
+      public void actionPerformed(ActionEvent e){
+        accountGUI one = new accountGUI();
+        mainWindow.setVisible(false);
+      }
+    });
 
     mainWindow.add(logPanel);
     mainWindow.add(u);
@@ -53,6 +62,7 @@ public class LoginWindow {
     mainWindow.add(pass);
     mainWindow.add(login);
     mainWindow.add(close);
+    mainWindow.add(account);
 
     mainWindow.setLayout(null);
     mainWindow.setVisible(true);
