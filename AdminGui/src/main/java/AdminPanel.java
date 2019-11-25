@@ -20,7 +20,7 @@ public class AdminPanel extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    public void initComponents() {
 
         close = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -163,11 +163,11 @@ public class AdminPanel extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void removeIpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeIpActionPerformed
+    public void removeIpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeIpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_removeIpActionPerformed
 
-    private void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
+    public void closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_closeActionPerformed
 
@@ -207,23 +207,24 @@ public class AdminPanel extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea IPtext;
-    private javax.swing.JButton addIp;
-    private javax.swing.JButton addUser;
-    private javax.swing.JButton close;
-    private javax.swing.JLabel connectedIP;
-    private javax.swing.JScrollBar jScrollBar1;
-    private javax.swing.JScrollBar jScrollBar2;
-    private javax.swing.JScrollBar jScrollBar3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JButton removeIp;
-    private javax.swing.JButton removeUser;
-    private javax.swing.JLabel serverStat;
-    private javax.swing.JTextArea serverText;
-    private javax.swing.JButton settings;
-    private javax.swing.JTextArea userText;
-    private javax.swing.JLabel users;
+  // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JTextArea IPtext;
+    public javax.swing.JButton addIp;
+    public javax.swing.JButton addUser;
+    public javax.swing.JButton close;
+    public javax.swing.JLabel connectedIP;
+    public javax.swing.JScrollBar jScrollBar1;
+    public javax.swing.JScrollBar jScrollBar2;
+    public javax.swing.JScrollBar jScrollBar3;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JScrollPane jScrollPane2;
+    public javax.swing.JScrollPane jScrollPane3;
+    public javax.swing.JButton removeIp;
+    public javax.swing.JButton removeUser;
+    public javax.swing.JLabel serverStat;
+    public javax.swing.JTextArea serverText;
+    public javax.swing.JButton settings;
+    public javax.swing.JTextArea userText;
+    public javax.swing.JLabel users;
     // End of variables declaration//GEN-END:variables
 }
