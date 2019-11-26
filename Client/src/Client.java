@@ -9,6 +9,9 @@ import javax.xml.crypto.Data;
 import java.util.*;
 import java.net.*;
 import java.io.*;
+import javax.swing.*;
+import javax.swing.filechooser.*;
+
 
 public class Client implements Runnable{
     // initialize socket and input output streams
@@ -18,6 +21,8 @@ public class Client implements Runnable{
     private String line = "";
     private BufferedReader in = null;
     private boolean running;
+	private JFileChooser ChooseDirectory = null;
+	private String path = ""; 
     
 	//changes here
 	public ArrayList<Object> buffer;	//changed to object buffer
@@ -31,6 +36,8 @@ public class Client implements Runnable{
     // constructor to put ip address and port
     public Client(String address, int port) {
         // establish a connection
+		ChooseDirectory = new JFileChooser();
+		ChooseDirectory.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         buffer = new ArrayList<Object>();
         try {
            running = true;
@@ -52,18 +59,27 @@ public class Client implements Runnable{
 
 
     }
-    public void sendMessage(String s) throws IOException {
-        out.println(s);
+    public void sendMessage(Object s) throws IOException {
+        //out.println(s);
 		oos.writeObject(s);
     }
-    public void process(String data){
+    public void process(Object data){
         buffer.add(data);
     }
 
     public String getMessage(){
-      String ret = "";
-      for(Object str : buffer)
-         ret = ret + str.toString() + '\n';
+	  String ret = "";
+      for(Object str : buffer){
+		 if(str instanceof String){ 
+			ret = ret + str.toString() + '\n';
+		 }
+		 else{
+			ChooseDirectory.showDialog(null);
+			path = ChooseDirectory.getCurrentDirectory().getPath();
+			(File)str.move((File)str.getPath, path, StandardCopyOption.REPLACE_EXISTING);
+			
+		 }
+	  }
       return ret;
    }
 
@@ -71,7 +87,7 @@ public class Client implements Runnable{
       while(running){
          try{
             process(in.readLine());
-			process((String) ois.readObject());
+			process(ois.readObject();
          }catch(Exception e){}
       }
    }
