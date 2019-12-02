@@ -1,29 +1,38 @@
 import java.net.*;
 import java.util.*;
+import java.io.*;
 
 public class Server implements IServer, Runnable{
 
+	private static String DATABASE = "user.dat";
 	private int port;
 	private boolean running;
 	private ServerSocket listener;
 	private ArrayList<ServerSideClient> clients;
+	private DatabaseHandler db;
+
 
 	//Constructor, configures server for use.
 	public Server(int port){
 		this.port = port;
 		running = true;
 		clients = new ArrayList<ServerSideClient>();
+		db = new DatabaseHandler();
 	}
 
 	//Sends data to all connected peers
-	public void broadcast(String data){
+	public void broadcast(Object data){
 		for(ServerSideClient ssc : clients)
 			ssc.send(data);
 	}
 
-	//Stub for DB
-	public void send(String data, String dest){
-
+	public void login(User user, ServerSideClient ssc){
+		if(db.validateUser(user)){
+			ssc.send(true);
+		}
+		else{
+			db.addUser(user);
+		}
 	}
 
 	//Runs main function of the server, waits for connection then assigns relevant data and creates new ServerSideClient instance and thread

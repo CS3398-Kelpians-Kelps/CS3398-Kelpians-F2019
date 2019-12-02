@@ -5,6 +5,7 @@ public class main{
 	public static void main(String[] args){
 		try{
 			int port = System.getenv("PORT");
+			//int port = 12345;
 			Server server = new Server(port);
 			Thread s = new Thread(server);
 			s.start();
