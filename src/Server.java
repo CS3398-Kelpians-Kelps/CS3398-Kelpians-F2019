@@ -21,17 +21,19 @@ public class Server implements IServer, Runnable{
 	}
 
 	//Sends data to all connected peers
-	public void broadcast(Object data){
+	public void broadcast(String data){
 		for(ServerSideClient ssc : clients)
 			ssc.send(data);
 	}
 
 	public void login(User user, ServerSideClient ssc){
 		if(db.validateUser(user)){
-			ssc.send(true);
+			System.out.println("Validated");
+			//ssc.send("true");
 		}
 		else{
-			db.addUser(user);
+			System.out.println("Invalid");
+			//ssc.send("false");
 		}
 	}
 

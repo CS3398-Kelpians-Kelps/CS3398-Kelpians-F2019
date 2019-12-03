@@ -6,8 +6,10 @@ import java.io.*;
 public class ServerSideClient implements IClient, Runnable{ //Server-side client instance, handles IP and thread
 	private IServer server;
 	private boolean running;
-	private ObjectInputStream in;
-	private ObjectOutputStream out;
+	private BufferedReader in;
+	private PrintWriter out;
+	private ObjectInputStream ois;
+	private ObjectOutputStream oos;
 	private Socket clientSocket;
 	private String IP;
 
@@ -18,23 +20,34 @@ public class ServerSideClient implements IClient, Runnable{ //Server-side client
 			clientSocket = socket;
 			IP = clientSocket.getRemoteSocketAddress().toString();
 			running = true;
-			in = new ObjectInputStream(clientSocket.getInputStream());
-			out = new ObjectOutputStream(clientSocket.getOutputStream());
+			//ois = new ObjectInputStream(clientSocket.getInputStream());
+			in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+			//in.connect();
+			//oos = new ObjectOutputStream(clientSocket.getOutputStream());
+			out = new PrintWriter(clientSocket.getOutputStream(), true);
+			//out.connect();
 		}catch(Exception e){System.out.println("ServerSideClient | ERR: " + e.getStackTrace()[1].getLineNumber());}
 	}
 
-	//Uses ObjectOutputStream to write to the socket
-	public void send(Object data){
+	public void sendBool(boolean b){
 		try{
-			out.writeObject(data);
-		}catch(Exception e){System.out.println("SSC Send | ERR: " + e.getStackTrace()[1].getLineNumber());}
+			//oos.writeBoolean(b);
+		}catch(Exception e){System.out.println("SSC Send Bool | ERR: " + e.getStackTrace()[1]);}
+	}
+
+	//Uses ObjectOutputStream to write to the socket
+	public void send(String data){
+		try{
+			out.println(data);
+		}catch(Exception e){System.out.println("SSC Send | ERR: " + e.getStackTrace()[1]);}
 	}
 
 	//The main function of the ServerSideClient. Constantly reads from socket and processes data.
 	public void run(){
 		while(running){
 			try{
-				process(in.readObject());
+				//processUser(ois.readObject());
+				process(in.readLine());
 			}catch(Exception e){System.out.println("ServerSideClient.run | Socket closed!"); stop();}
 		}
 	}
@@ -44,7 +57,9 @@ public class ServerSideClient implements IClient, Runnable{ //Server-side client
 		try{
 			running = false;
 			in.close();
+			//ois.close();
 			out.close();
+			//oos.close();
 			clientSocket.close();
 		}catch(Exception e){System.out.println("ServerSideClient.stop | ERR: " + e.getStackTrace()[1].getLineNumber());}
 	}
@@ -54,11 +69,14 @@ public class ServerSideClient implements IClient, Runnable{ //Server-side client
 		return IP;
 	}
 
-	//Calls broadcast function
-	public void process(Object data){
+	public void processUser(Object data){
 		if(data instanceof User){
-			server.login((User) data, this);
+			server.login((User)data, this);
 		}
+	}
+
+	//Calls broadcast function
+	public void process(String data){
 		server.broadcast(data);
 	}
 }

@@ -1,7 +1,7 @@
 public interface IClient{
 
 	//Send to client from server
-	public void send(Object data);
+	public void send(String data);
 
 	//Runs the client
 	public void run();
@@ -10,5 +10,5 @@ public interface IClient{
 	public void stop();
 
 	//Processes data
-	public void process(Object data);
+	public void process(String data);
 }
