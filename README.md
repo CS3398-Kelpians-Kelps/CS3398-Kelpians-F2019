@@ -35,6 +35,6 @@ We are doing this because we feel like transferring data via email is a hinderen
                                        Sprint 3: refactored server for clarity, moved to enterprise server hosting solution, implemented user authorization, and added file transfer serverside
   </li>
   <li>
-    <strong>Patrick Parker:</strong> Sprint 1: Created Client side of program to link up to server. Sprint 2: Redid base code for server and client for sending and recieving objects instead of strings. Added in some functionality for image sending and recieving. Going Forward: Working on getting more features added and updating any code that could use refactoring.
+    <strong>Patrick Parker:</strong> Sprint 1: Created Client side of program to link up to server. Sprint 2: Redid base code for server and client for sending and recieving objects instead of strings. Added in some functionality for image sending and recieving. Going Forward: Working on getting more features added and updating any code that could use refactoring. Sprint 3: refactored parts of main client to make more readable and usable. Added functionality for sending and receiving any files. Ran into issues with recieving multiple files at once crashes program. Going forward, would refactor server and client to not send/recieving when already in the process of recieving data. Add queue to server for when something gets sent.
   </li>
 </ul>
