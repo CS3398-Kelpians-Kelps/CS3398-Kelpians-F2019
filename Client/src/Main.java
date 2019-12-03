@@ -20,7 +20,6 @@ public class Main {
         Thread client = new Thread(c);
         client.start();
         LoginWindow g = new LoginWindow(c);
-
         //GUI menu = new GUI(address.getHostAddress());
         //menu.DisplayMenu();
     }
