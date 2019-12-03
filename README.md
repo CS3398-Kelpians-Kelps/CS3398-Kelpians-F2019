@@ -32,6 +32,7 @@ We are doing this because we feel like transferring data via email is a hinderen
   </li>
   <li>
     <strong>Zachary Goldberg:</strong> Sprint 1: Created the server and linked all pieces together. The next step is to create a method for handling other files types. Sprint 2: Hooked database into the server. Going forward I am hoping to get full user login functionality and user seperation working.
+                                       Sprint 3: refactored server for clarity, moved to enterprise server hosting solution, implemented user authorization, and added file transfer serverside
   </li>
   <li>
     <strong>Patrick Parker:</strong> Sprint 1: Created Client side of program to link up to server. Sprint 2: Redid base code for server and client for sending and recieving objects instead of strings. Added in some functionality for image sending and recieving. Going Forward: Working on getting more features added and updating any code that could use refactoring.
