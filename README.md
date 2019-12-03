@@ -28,7 +28,7 @@ We are doing this because we feel like transferring data via email is a hinderen
   <strong>Sprint 2:</strong>Designed user table for use in database and help setup database on server. Artifact: db_design branch: db_design.txt. This is used to create user's and log them in. Next step will be too setup a subclass for Admin user, and store in DB.
   </li>
   <li>
-    <strong>Chassidy Foreman:</strong> Created the basic text GUI with button functionality to be handed off to the team for additional linking to server and other GUIs. Developed the login GUI to be linked to the updated Text GUI for the future client. The next step will be updating the layout of the text GUI to make it more appealing to the user.
+    <strong>Chassidy Foreman:</strong> Created the basic text GUI with button functionality to be handed off to the team for additional linking to server and other GUIs. Developed the login GUI to be linked to the updated Text GUI for the future client. The next step will be updating the layout of the text GUI to make it more appealing to the user. Created an account sign-up GUI for the application and added that to the login GUI that will be connected to the database in the future.
   </li>
   <li>
     <strong>Zachary Goldberg:</strong> Sprint 1: Created the server and linked all pieces together. The next step is to create a method for handling other files types. Sprint 2: Hooked database into the server. Going forward I am hoping to get full user login functionality and user seperation working.
