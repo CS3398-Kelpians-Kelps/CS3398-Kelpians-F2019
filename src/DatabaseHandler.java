@@ -2,8 +2,8 @@ import java.util.*;
 import java.io.*;
 
 public class DatabaseHandler{
-	private static final String DATABASE_FILE = System.getenv("DATABASE");
-	//private static final String DATABASE_FILE = "database.dat";
+	//private static final String DATABASE_FILE = System.getenv("DATABASE");
+	private static final String DATABASE_FILE = "database.dat";
 	private static ArrayList<User> users;
 
 	public DatabaseHandler(){
