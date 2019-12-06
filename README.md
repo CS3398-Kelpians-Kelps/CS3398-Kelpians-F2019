@@ -26,6 +26,7 @@ We are doing this because we feel like transferring data via email is a hinderen
   <strong>Alex Key:</strong> All files inside db directory were done by Alex Key. This includes the connector.java, as well as the connector_doc.txt. A mySQL database was setup on my local machine to test the connector, but theres no code for that. The artifact is used for querying / inserting / updating / deleting table columns in our database. My next step will be to install and setup the db on our server, as soon as the server is ready.
   <br>
   <strong>Sprint 2:</strong>Designed user table for use in database and help setup database on server. Artifact: db_design branch: db_design.txt. This is used to create user's and log them in. Next step will be too setup a subclass for Admin user, and store in DB.
+  <strong>Spring 3:</strong>Refactored User class to allow for inheritance, added an admin class that inherits from the refactored User class. Wrote class to log user data. This can all be found on the branch 'admin_user'.
   </li>
   <li>
     <strong>Chassidy Foreman:</strong> Created the basic text GUI with button functionality to be handed off to the team for additional linking to server and other GUIs. Developed the login GUI to be linked to the updated Text GUI for the future client. The next step will be updating the layout of the text GUI to make it more appealing to the user. Created an account sign-up GUI for the application and added that to the login GUI that will be connected to the database in the future.
